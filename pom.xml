@@ -30,7 +30,7 @@
     <connection>scm:git:git@github.com:FasterXML/jackson-core.git</connection>
     <developerConnection>scm:git:git@github.com:FasterXML/jackson-core.git</developerConnection>
     <url>http://github.com/FasterXML/jackson-core</url>    
-    <tag>jackson-core-2.13.4</tag>
+    <tag>2.13.4+sp1</tag>
   </scm>
 
   <properties>
