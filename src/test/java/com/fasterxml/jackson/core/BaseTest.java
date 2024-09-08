@@ -42,7 +42,7 @@ public abstract class BaseTest
         MODE_INPUT_STREAM_THROTTLED,
         MODE_READER
     };
-    
+
     /*
     /**********************************************************
     /* Some sample documents:
@@ -60,7 +60,7 @@ public abstract class BaseTest
     protected final static int SAMPLE_SPEC_VALUE_TN_ID3 = 234;
     protected final static int SAMPLE_SPEC_VALUE_TN_ID4 = 38793;
 
-    protected final static String SAMPLE_DOC_JSON_SPEC = 
+    protected final static String SAMPLE_DOC_JSON_SPEC =
         "{\n"
         +"  \"Image\" : {\n"
         +"    \"Width\" : "+SAMPLE_SPEC_VALUE_WIDTH+",\n"
@@ -81,7 +81,7 @@ public abstract class BaseTest
     /* Helper classes (beans)
     /**********************************************************
      */
-    
+
     /**
      * Sample class from Jackson tutorial ("JacksonInFiveMinutes")
      */
@@ -97,7 +97,7 @@ public abstract class BaseTest
               _first = f;
               _last = l;
           }
-          
+
           public String getFirst() { return _first; }
           public String getLast() { return _last; }
 
@@ -110,7 +110,7 @@ public abstract class BaseTest
               if (o == this) return true;
               if (o == null || o.getClass() != getClass()) return false;
               Name other = (Name) o;
-              return _first.equals(other._first) && _last.equals(other._last); 
+              return _first.equals(other._first) && _last.equals(other._last);
           }
         }
 
@@ -128,7 +128,7 @@ public abstract class BaseTest
             _gender = g;
             _userImage = data;
         }
-        
+
         public Name getName() { return _name; }
         public boolean isVerified() { return _isVerified; }
         public Gender getGender() { return _gender; }
@@ -146,7 +146,7 @@ public abstract class BaseTest
             if (o == null || o.getClass() != getClass()) return false;
             FiveMinuteUser other = (FiveMinuteUser) o;
             if (_isVerified != other._isVerified) return false;
-            if (_gender != other._gender) return false; 
+            if (_gender != other._gender) return false;
             if (!_name.equals(other._name)) return false;
             byte[] otherImage = other._userImage;
             if (otherImage.length != _userImage.length) return false;
@@ -289,7 +289,7 @@ public abstract class BaseTest
             fail("Expected INT or STRING value, got "+t);
         }
     }
-    
+
     protected void verifyFieldName(JsonParser p, String expName)
         throws IOException
     {
@@ -303,7 +303,7 @@ public abstract class BaseTest
         // First, via textual
         assertEquals(String.valueOf(expValue), p.getText());
     }
-    
+
     /*
     /**********************************************************
     /* Parser construction
@@ -355,7 +355,7 @@ public abstract class BaseTest
         }
         throw new RuntimeException("internal error");
     }
-    
+
     protected JsonParser createParserUsingReader(String input) throws IOException
     {
         return createParserUsingReader(new JsonFactory(), input);
@@ -436,7 +436,7 @@ public abstract class BaseTest
     protected void writeJsonDoc(JsonFactory f, String doc, JsonGenerator g) throws IOException
     {
         JsonParser p = f.createParser(aposToQuotes(doc));
-        
+
         while (p.nextToken() != null) {
             g.copyCurrentStructure(p);
         }
