@@ -133,7 +133,7 @@ public class TestTextBuffer
     }
 
     public void testContentsAsDecimalThrowsNumberFormatException() {
-        TextBuffer textBuffer = new TextBuffer( null);
+        TextBuffer textBuffer = new TextBuffer(null);
 
         try {
             textBuffer.contentsAsDecimal();
