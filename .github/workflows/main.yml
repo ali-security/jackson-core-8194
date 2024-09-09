@@ -48,6 +48,8 @@ jobs:
         # gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
     - name: Build
       run: ./mvnw -B -q -ff -ntp verify
+    - name: Try
+      run: unzip -l target/jackson-core-2.13.4+sp1.jar | grep PackageVersion
     - name: Extract project Maven version
       id: projectVersion
       run: echo ::set-output name=version::$(./mvnw org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -DforceStdout -Dexpression=project.version -q)
