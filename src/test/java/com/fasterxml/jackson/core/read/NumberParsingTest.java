@@ -513,8 +513,10 @@ public class NumberParsingTest
                 "-8888392."+BASE_FRACTION,
         }) {
             final String DOC = "[ "+asText+" ]";
-
-            JsonParser p = createParser(mode, DOC);
+            JsonFactory factory = JsonFactory.builder()
+                .streamReadConstraints(StreamReadConstraints.builder().withMaxNumberLength(1000000).build())
+                .build();
+            JsonParser p = createParser(factory, mode, DOC);
             assertToken(JsonToken.START_ARRAY, p.nextToken());
             assertToken(JsonToken.VALUE_NUMBER_FLOAT, p.nextToken());
             final BigDecimal exp = new BigDecimal(asText);
@@ -682,7 +684,9 @@ public class NumberParsingTest
             input.append(1);
         }
         final String DOC = input.toString();
-        JsonFactory f = new JsonFactory();
+        JsonFactory f = JsonFactory.builder()
+                .streamReadConstraints(StreamReadConstraints.builder().withMaxNumberLength(10000).build())
+                .build();
         _testIssue160LongNumbers(f, DOC, false);
         _testIssue160LongNumbers(f, DOC, true);
     }
@@ -690,8 +694,8 @@ public class NumberParsingTest
     private void _testIssue160LongNumbers(JsonFactory f, String doc, boolean useStream) throws Exception
     {
         JsonParser p = useStream
-                ? FACTORY.createParser(doc.getBytes("UTF-8"))
-                        : FACTORY.createParser(doc);
+                ? f.createParser(doc.getBytes("UTF-8"))
+                : f.createParser(doc);
         assertToken(JsonToken.VALUE_NUMBER_INT, p.nextToken());
         BigInteger v = p.getBigIntegerValue();
         assertNull(p.nextToken());
