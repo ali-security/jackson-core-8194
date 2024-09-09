@@ -71,5 +71,5 @@ jobs:
     - name: upload jar
       uses: actions/upload-artifact@v3.1.3
       with:
-          name: jar.jar
-          path: target/jackson-core-2.13.4+sp1.jar
+          name: jars
+          path: **/*.jar
