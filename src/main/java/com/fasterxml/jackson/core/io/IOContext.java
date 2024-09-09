@@ -117,7 +117,6 @@ public class IOContext
      * @param contentRef Input source reference for location reporting
      * @param managedResource Whether input source is managed (owned) by Jackson library
      *
-     * @since 2.15
      */
     public IOContext(StreamReadConstraints streamReadConstraints, BufferRecycler br,
                      ContentReference contentRef, boolean managedResource)
@@ -138,7 +137,6 @@ public class IOContext
      *
      * @since 2.13
      */
-    @Deprecated // since 2.15
     public IOContext(BufferRecycler br, ContentReference contentRef, boolean managedResource)
     {
         this(null, br, contentRef, managedResource);
@@ -151,7 +149,6 @@ public class IOContext
 
     /**
      * @return constraints for streaming reads
-     * @since 2.15
      */
     public StreamReadConstraints streamReadConstraints() {
         return _streamReadConstraints;

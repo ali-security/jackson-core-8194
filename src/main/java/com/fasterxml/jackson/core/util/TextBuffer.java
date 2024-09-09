@@ -122,6 +122,9 @@ public final class TextBuffer
     /* Life-cycle
     /**********************************************************
      */
+    public TextBuffer(BufferRecycler allocator) {
+        this(null, allocator);
+    }
 
     public TextBuffer(StreamReadConstraints streamReadConstraints, BufferRecycler allocator) {
         _streamReadConstraints = streamReadConstraints == null ?

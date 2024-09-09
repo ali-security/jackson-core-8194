@@ -11,7 +11,7 @@ public class TestTextBuffer
      */
     public void testSimple()
     {
-        TextBuffer tb = new TextBuffer(null, new BufferRecycler());
+        TextBuffer tb = new TextBuffer(new BufferRecycler());
         tb.append('a');
         tb.append(new char[] { 'X', 'b' }, 1, 1);
         tb.append("c", 0, 1);
@@ -50,7 +50,7 @@ public class TestTextBuffer
         final String EXP = "a" + STR + "c";
  
         // ok: first test with String:
-        TextBuffer tb = new TextBuffer(null, new BufferRecycler());
+        TextBuffer tb = new TextBuffer(new BufferRecycler());
         tb.append('a');
         tb.append(STR, 0, len);
         tb.append('c');
@@ -69,7 +69,7 @@ public class TestTextBuffer
     // [core#152]
     public void testExpand()
     {
-        TextBuffer tb = new TextBuffer(null, new BufferRecycler());
+        TextBuffer tb = new TextBuffer(new BufferRecycler());
         char[] buf = tb.getCurrentSegment();
 
         while (buf.length < 500 * 1000) {
@@ -85,7 +85,7 @@ public class TestTextBuffer
 
     // [core#182]
     public void testEmpty() {
-        TextBuffer tb = new TextBuffer(null, new BufferRecycler());
+        TextBuffer tb = new TextBuffer(new BufferRecycler());
         tb.resetWithEmpty();
 
         assertTrue(tb.getTextBuffer().length == 0);
