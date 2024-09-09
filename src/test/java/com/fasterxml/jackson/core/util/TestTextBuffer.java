@@ -26,7 +26,7 @@ public class TestTextBuffer
 
     public void testLonger()
     {
-        TextBuffer tb = new TextBuffer(null, null);
+        TextBuffer tb = new TextBuffer(null);
         for (int i = 0; i < 2000; ++i) {
             tb.append("abc", 0, 3);
         }
@@ -58,7 +58,7 @@ public class TestTextBuffer
         assertEquals(EXP, tb.contentsAsString());
  
         // then char[]
-        tb = new TextBuffer(null, new BufferRecycler());
+        tb = new TextBuffer(new BufferRecycler());
         tb.append('a');
         tb.append(STR.toCharArray(), 0, len);
         tb.append('c');
@@ -111,7 +111,7 @@ public class TestTextBuffer
 
     public void testAppendTakingTwoAndThreeInts() {
         BufferRecycler bufferRecycler = new BufferRecycler();
-        TextBuffer textBuffer = new TextBuffer(null, bufferRecycler);
+        TextBuffer textBuffer = new TextBuffer(bufferRecycler);
         textBuffer.ensureNotShared();
         char[] charArray = textBuffer.getTextBuffer();
         textBuffer.append(charArray, 0, 200);
@@ -122,7 +122,7 @@ public class TestTextBuffer
 
     public void testEnsureNotSharedAndResetWithString() {
         BufferRecycler bufferRecycler = new BufferRecycler();
-        TextBuffer textBuffer = new TextBuffer(null, bufferRecycler);
+        TextBuffer textBuffer = new TextBuffer(bufferRecycler);
         textBuffer.resetWithString("");
 
         assertFalse(textBuffer.hasTextAsCharacters());
@@ -145,7 +145,7 @@ public class TestTextBuffer
 
     public void testGetTextBufferAndEmptyAndGetCurrentSegmentAndFinishCurrentSegment() {
         BufferRecycler bufferRecycler = new BufferRecycler();
-        TextBuffer textBuffer = new TextBuffer(null, bufferRecycler);
+        TextBuffer textBuffer = new TextBuffer(bufferRecycler);
         textBuffer.emptyAndGetCurrentSegment();
         textBuffer.finishCurrentSegment();
         textBuffer.getTextBuffer();
@@ -155,7 +155,7 @@ public class TestTextBuffer
 
     public void testGetTextBufferAndAppendTakingCharAndContentsAsArray() {
         BufferRecycler bufferRecycler = new BufferRecycler();
-        TextBuffer textBuffer = new TextBuffer(null, bufferRecycler);
+        TextBuffer textBuffer = new TextBuffer(bufferRecycler);
         textBuffer.append('(');
         textBuffer.contentsAsArray();
         textBuffer.getTextBuffer();
@@ -165,7 +165,7 @@ public class TestTextBuffer
 
     public void testGetTextBufferAndResetWithString() {
         BufferRecycler bufferRecycler = new BufferRecycler();
-        TextBuffer textBuffer = new TextBuffer(null, bufferRecycler);
+        TextBuffer textBuffer = new TextBuffer(bufferRecycler);
         textBuffer.resetWithString("");
 
         assertFalse(textBuffer.hasTextAsCharacters());
@@ -177,7 +177,7 @@ public class TestTextBuffer
 
     public void testResetWithString() {
         BufferRecycler bufferRecycler = new BufferRecycler();
-        TextBuffer textBuffer = new TextBuffer(null, bufferRecycler);
+        TextBuffer textBuffer = new TextBuffer(bufferRecycler);
         textBuffer.ensureNotShared();
         textBuffer.finishCurrentSegment();
 
