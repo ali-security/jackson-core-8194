@@ -94,13 +94,13 @@ public class TestTextBuffer
     }
 
     public void testResetWithAndSetCurrentAndReturn() {
-        TextBuffer textBuffer = new TextBuffer(null, null);
+        TextBuffer textBuffer = new TextBuffer(null);
         textBuffer.resetWith('l');
         textBuffer.setCurrentAndReturn(349);
     }
 
     public void testGetCurrentSegment() {
-        TextBuffer textBuffer = new TextBuffer(null, null);
+        TextBuffer textBuffer = new TextBuffer(null);
         textBuffer.emptyAndGetCurrentSegment();
         // 26-Aug-2019, tatu: Value depends on "minimum segment size":
         textBuffer.setCurrentAndReturn(500);
@@ -133,7 +133,7 @@ public class TestTextBuffer
     }
 
     public void testContentsAsDecimalThrowsNumberFormatException() {
-        TextBuffer textBuffer = new TextBuffer(null, null);
+        TextBuffer textBuffer = new TextBuffer(null);
 
         try {
             textBuffer.contentsAsDecimal();
@@ -189,7 +189,7 @@ public class TestTextBuffer
     }
 
     public void testGetCurrentSegmentSizeResetWith() {
-        TextBuffer textBuffer = new TextBuffer(null, null);
+        TextBuffer textBuffer = new TextBuffer(null);
         textBuffer.resetWith('.');
         textBuffer.resetWith('q');
 
@@ -197,7 +197,7 @@ public class TestTextBuffer
     }
 
     public void testGetSizeFinishCurrentSegmentAndResetWith() {
-        TextBuffer textBuffer = new TextBuffer(null, null);
+        TextBuffer textBuffer = new TextBuffer(null);
         textBuffer.resetWith('.');
         textBuffer.finishCurrentSegment();
         textBuffer.resetWith('q');
