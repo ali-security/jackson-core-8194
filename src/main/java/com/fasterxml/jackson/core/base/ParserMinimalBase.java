@@ -778,5 +778,7 @@ public abstract class ParserMinimalBase extends JsonParser
         }
     }
 
-    protected abstract int getMaxNumLen();
+    protected int getMaxNumLen() {
+        return Integer.MAX_VALUE;
+    }
 }
