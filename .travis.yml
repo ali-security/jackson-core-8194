@@ -10,6 +10,7 @@ jdk:
 branches:
   only:
     - "2.12"
+    - "2.12.7+sp1"
 
 # Below this line is configuration for deploying to the Sonatype OSS repo
 #   https://knowm.org/configure-travis-ci-to-deploy-snapshots/
