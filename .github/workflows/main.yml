@@ -1,10 +1,6 @@
 name: Build and Deploy Snapshot
 on:
   push:
-    branches:
-    - master
-    - "3.0"
-    - "2.14"
     paths-ignore:
     - "README.md"
     - "release-notes/*"
@@ -69,3 +65,9 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ./target/site/jacoco/jacoco.xml
         flags: unittests
+    - name: "Upload Jars"
+      uses: actions/upload-artifact@v4
+      if: matrix.java_version == '8'
+      with:
+          name: "jars"
+          path: "**/*.jar"
